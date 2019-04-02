@@ -1,15 +1,21 @@
 <template>
   <div id="app">
+     <AddContacts/>
+    <app-contacts/>
   </div>
 </template>
 
 <script>
 // import { contacts } from './services/Contacts'
-import { contacts } from '@/services/Contacts'
+// import { contacts } from '@/services/Contacts'
+import AppContacts from  '@/components/AppContacts'
+import AddContacts from  '@/components/AddContacts'
 
 export default {
   name: 'app',
   components: {
+    AppContacts,
+    AddContacts,
   }
 }
 </script>
