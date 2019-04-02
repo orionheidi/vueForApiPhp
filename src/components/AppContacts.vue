@@ -7,13 +7,22 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex';
 import { contactService } from '@/services/Contacts'
 export default {
-    data(){
-        return {
-            contacts: []
-        }
+  
+   computed:{
+        ...mapGetters(['contacts'])
     },
+
+    methods: {
+        ...mapActions(['fatchContacts'])
+    },
+
+    created(){
+        this.fatchContacts();
+        // this.$store.dispatch('fatchContacts')
+    }
 
     // create (){
     //     contacts.getAll().then(response =>{
@@ -23,15 +32,15 @@ export default {
     //     })
     // }
 
-    async created (){
-        try {
-           const response =  await contactService.getAll()
-           console.log(response)
-           this.contacts = response.data;
-        }catch (error){
-            console.log(error)
-        }
-    }
+    // async created (){
+    //     try {
+    //        const response =  await contactService.getAll()
+    //        console.log(response)
+    //        this.contacts = response.data;
+    //     }catch (error){
+    //         console.log(error)
+    //     }
+    // }
 
 }
 </script>
