@@ -2,13 +2,14 @@
       <ul>
        <li v-for="contact in contacts" :key="contact.id">
            {{contact.first_name}}
+           <button class="btn btn-danger mt-2" @click="OnDelete(contact)">Delete</button>
        </li>
    </ul>
 </template>
 
 <script>
 import {mapActions, mapGetters} from 'vuex';
-import { contactService } from '@/services/Contacts'
+// import { contactService } from '@/services/Contacts'
 export default {
   
    computed:{
@@ -16,13 +17,19 @@ export default {
     },
 
     methods: {
-        ...mapActions(['fatchContacts'])
+        ...mapActions(['fatchContacts','deleteContact']),
+        OnDelete(contact){
+        this.deleteContact(contact);
+        // this.$store.dispatch('fatchContacts')
+    }
     },
 
     created(){
         this.fatchContacts();
         // this.$store.dispatch('fatchContacts')
     }
+
+
 
     // create (){
     //     contacts.getAll().then(response =>{

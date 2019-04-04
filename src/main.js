@@ -29,6 +29,10 @@ const store = new Vuex.Store({
       //   ...context.getter.contacts,response.data
       // ])
 
+    },
+    async deleteContact(context,contact){
+      const response = await contactService.delete(contact)
+      context.commit('REMOVE_CONTACT',response.data)
     }
   },
   getters:{
@@ -40,6 +44,9 @@ const store = new Vuex.Store({
     },
     ADD_CONTACT(state,contact){
       state.contacts.push(contact)
+    },
+    REMOVE_CONTACT(state,contact){
+      state.contacts.splice(contact, 1);
     }
   }
 })
