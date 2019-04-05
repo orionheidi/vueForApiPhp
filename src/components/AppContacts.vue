@@ -1,10 +1,13 @@
 <template>
+<div>
       <ul>
        <li v-for="contact in contacts" :key="contact.id">
            {{contact.first_name}}
            <button class="btn btn-danger mt-2" @click="OnDelete(contact)">Delete</button>
        </li>
    </ul>
+   <button @click="handelLogout">Logout</button>
+</div>
 </template>
 
 <script>
@@ -17,7 +20,11 @@ export default {
     },
 
     methods: {
-        ...mapActions(['fatchContacts','deleteContact']),
+        ...mapActions(['fatchContacts','deleteContact','logout']),
+        handelLogout(){
+            this.logout()
+            this.$router.push('login')
+        },
         OnDelete(contact){
         this.deleteContact(contact);
         // this.$store.dispatch('fatchContacts')
@@ -29,6 +36,7 @@ export default {
         // this.$store.dispatch('fatchContacts')
     }
 
+    
 
 
     // create (){

@@ -15,7 +15,7 @@ class Contacts {
     }
 
     delete (id){
-        return axios.delete('http://localhost:8000/api/contacts/id')
+        return axios.delete(`http://localhost:8000/api/contacts/${id}`)
     }
 }
 
